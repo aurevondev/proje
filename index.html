@@ -1,182 +1,501 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Usta İnşaat | İnşaat, Tadilat, Boya & Mantolama</title>
-  <meta name="description" content="Usta İnşaat; inşaat işleri, boya-badana, alçı-sıva, mantolama, tadilat, tamir, fayans, çatı ve demir doğrama hizmetleri.">
-  <meta name="theme-color" content="#f5a400">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usta İnşaat | Kişiye Özel Tasarım & Anahtar Teslim Tadilat</title>
+    <meta name="description" content="Usta İnşaat - İnşaat, Boya Badana, Mantolama, Çatı İşleri, Fayans ve Anahtar Teslim Tadilat Hizmetleri. Sağlam Yapılar, Güvenli Gelecek.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icon Set -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #f39c12; /* İnşaat Sarısı */
+            --dark-color: #1e272e;    /* Koyu Gri/Siyah */
+            --light-color: #f8f9fa;   /* Açık Arka Plan */
+            --accent-color: #27ae60;  /* WhatsApp Yeşili */
+            --text-color: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-color);
+            color: #fff;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Header & Nav */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 32px;
+            color: var(--primary-color);
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            color: var(--dark-color);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 11px;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .nav-btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: #d35400;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 39, 46, 0.85), rgba(30, 39, 46, 0.85)), url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1350&q=80') center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
+            background: var(--primary-color);
+            color: var(--dark-color);
+            padding: 5px 15px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 20px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Hizmetlerimiz Section */
+        .services {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h3 {
+            font-size: 32px;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h3::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid #e1e1e1;
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card h4 {
+            font-size: 20px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Banner / Slogan */
+        .banner {
+            background: var(--dark-color);
+            color: #fff;
+            padding: 50px 5%;
+            text-align: center;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .banner h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* İletişim Section */
+        .contact {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-box {
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-box h4 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .phone-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--dark-color);
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            transition: 0.3s;
+        }
+
+        .phone-number:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Mobil Sabit Butonlar (Hızlı Erişim) */
+        .sticky-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .sticky-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        .sticky-call { background-color: var(--primary-color); }
+        .sticky-whatsapp { background-color: var(--accent-color); }
+
+        .sticky-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 30px; }
+            .hero p { font-size: 16px; }
+            .top-bar { flex-direction: column; gap: 5px; text-align: center; }
+        }
+    </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span>İstanbul ve çevresinde profesyonel yapı & tadilat hizmetleri</span>
-      <a href="tel:+905326164689">📞 +90 532 616 46 89</a>
-    </div>
-  </div>
 
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="#anasayfa" aria-label="Usta İnşaat ana sayfa">
-        <span class="brand-mark">⌂</span>
-        <span><strong>USTA</strong> İNŞAAT<small>YAPI • TADİLAT • ONARIM</small></span>
-      </a>
-      <button class="menu-btn" aria-label="Menüyü aç">☰</button>
-      <nav>
-        <a href="#anasayfa">Ana Sayfa</a>
-        <a href="#hizmetler">Hizmetler</a>
-        <a href="#hakkimizda">Hakkımızda</a>
-        <a href="#projeler">Çalışmalarımız</a>
-        <a href="#iletisim">İletişim</a>
-      </nav>
-      <a class="nav-cta" href="https://wa.me/905326164689?text=Merhaba%2C%20Usta%20%C4%B0n%C5%9Faat%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+    <!-- Üst Bilgi Çubuğu -->
+    <div class="top-bar">
+        <div><i class="fa-solid fa-location-dot"></i> Profesyonel İnşaat & Tadilat Hizmetleri</div>
+        <div>Hemen Arayın: <a href="tel:+905383486268">+90 538 348 62 68</a></div>
     </div>
-  </header>
 
-  <main id="anasayfa">
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-helmet-safety logo-icon"></i>
+                <div class="logo-text">
+                    <h1>USTA İNŞAAT</h1>
+                    <span>ustainsaat.com</span>
+                </div>
+            </a>
+            <a href="tel:+905383486268" class="nav-btn"><i class="fa-solid fa-phone"></i> ARA: 0538 348 62 68</a>
+        </div>
+    </header>
+
+    <!-- Hero Bölümü -->
     <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">GÜVENİLİR YAPI & TADİLAT HİZMETİ</div>
-          <h1>İşinizi <span>usta ellere</span> bırakın.</h1>
-          <p>İnşaat, tadilat, boya-badana, alçı-sıva, mantolama, fayans, çatı ve daha fazlası. İhtiyacınıza özel, temiz ve planlı uygulama.</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="https://wa.me/905326164689?text=Merhaba%2C%20ke%C5%9Fif%20ve%20fiyat%20teklifi%20almak%20istiyorum." target="_blank" rel="noopener">Ücretsiz Teklif Al →</a>
-            <a class="btn ghost" href="tel:+905326164689">Hemen Ara</a>
-          </div>
-          <div class="trust-row">
-            <div><b>✓</b> Kişiye özel çalışma</div>
-            <div><b>✓</b> Titiz uygulama</div>
-            <div><b>✓</b> Açık iletişim</div>
-          </div>
+        <div class="hero-content">
+            <span class="badge">Kişiye Özel Tasarım</span>
+            <h2>Sağlam Yapılar, Güvenli Gelecek</h2>
+            <p>İnşaat, çatı, mantolama, boya-badana ve anahtar teslim tüm tadilat işlerinizde usta işçilik ve kaliteli çözüm sunuyoruz.</p>
+            <div class="hero-buttons">
+                <a href="tel:+905383486268" class="btn btn-primary"><i class="fa-solid fa-phone"></i> Hemen Ara</a>
+                <a href="https://wa.me/905383486268?text=Merhaba,%20hizmetleriniz%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp'tan Yaz</a>
+            </div>
         </div>
-        <div class="hero-card">
-          <div class="hero-card-top">HİZMETLERİMİZ</div>
-          <div class="service-mini"><span>01</span> İnşaat İşleri</div>
-          <div class="service-mini"><span>02</span> Boya • Badana</div>
-          <div class="service-mini"><span>03</span> Alçı • Sıva</div>
-          <div class="service-mini"><span>04</span> Mantolama</div>
-          <div class="service-mini"><span>05</span> Tadilat • Tamir</div>
-          <div class="service-mini"><span>06</span> Fayans • Çatı</div>
-          <a class="card-link" href="#hizmetler">Tüm hizmetleri gör →</a>
-        </div>
-      </div>
     </section>
 
-    <section class="stats">
-      <div class="container stats-grid">
-        <div><strong>01</strong><span>Keşif & İhtiyaç Analizi</span></div>
-        <div><strong>02</strong><span>Planlama & Teklif</span></div>
-        <div><strong>03</strong><span>Uygulama</span></div>
-        <div><strong>04</strong><span>Teslim & Kontrol</span></div>
-      </div>
+    <!-- Hizmetlerimiz -->
+    <section class="services">
+        <div class="section-title">
+            <h3>Hizmetlerimiz</h3>
+        </div>
+        <div class="services-grid">
+
+            <div class="service-card">
+                <i class="fa-solid fa-building"></i>
+                <h4>İnşaat İşleri</h4>
+                <p>Kaba ve ince inşaat işlerinizde güvenilir, sağlam ve kaliteli yapılar inşa ediyoruz.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-key"></i>
+                <h4>Anahtar Teslim İşler</h4>
+                <p>Projenizi sıfırdan alıp, eksiksiz ve oturuma hazır şekilde teslim ediyoruz.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-paint-roller"></i>
+                <h4>Boya - Badana</h4>
+                <p>İç ve dış mekânlarda kaliteli malzeme ve titiz işçilik ile profesyonel boya hizmeti.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-fill-drip"></i>
+                <h4>Alçı - Sıva</h4>
+                <p>Pürüzsüz duvarlar için alçı sıva, kartonpiyer ve dekoratif duvar uygulamaları.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-border-all"></i>
+                <h4>Fayans İşleri</h4>
+                <p>Banyo, mutfak ve zeminlerde estetik ve su yalıtımlı fayans-kalebodur döşeme.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-temperature-arrow-down"></i>
+                <h4>Mantolama</h4>
+                <p>Binalarınızda yüksek ısı ve ses yalıtımı sağlayarak enerji tasarrufu sağlıyoruz.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-house-chimney"></i>
+                <h4>Çatı İşleri</h4>
+                <p>Çatı yapımı, çatı tamiri, izolasyon ve aktarma işlerinizi garantili çözüyoruz.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-faucet-drip"></i>
+                <h4>Tadilat İşleri</h4>
+                <p>Ev, ofis ve iş yerleriniz için modern ve ihtiyaca uygun yenileme çözümleri.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-wrench"></i>
+                <h4>Tamir İşleri</h4>
+                <p>Yapılarınızdaki her türlü arıza, bakım ve onarım işlerini hızlıca tamamlıyoruz.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fa-solid fa-bars-staggered"></i>
+                <h4>Demir Doğrama İşleri</h4>
+                <p>Korkuluk, ferforje, kapı ve özel ölçü dayanıklı demir imalat hizmetleri.</p>
+            </div>
+
+        </div>
     </section>
 
-    <section id="hizmetler" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">HİZMETLERİMİZ</span>
-            <h2>Yapınız için gereken <span>tüm işler</span></h2>
-          </div>
-          <p>Tek bir iş veya komple tadilat projesi için keşif ve uygulama desteği.</p>
-        </div>
-        <div class="service-grid">
-          <article class="service-card"><div class="icon">🏗️</div><h3>İnşaat İşleri</h3><p>Yapım, yenileme ve çeşitli inşaat uygulamaları.</p></article>
-          <article class="service-card"><div class="icon">🎨</div><h3>Boya - Badana</h3><p>İç ve dış cephe boya, badana ve yüzey hazırlığı.</p></article>
-          <article class="service-card"><div class="icon">🧱</div><h3>Alçı - Sıva</h3><p>Duvar ve tavan yüzeylerinde düzgün, temiz uygulama.</p></article>
-          <article class="service-card"><div class="icon">🏠</div><h3>Mantolama</h3><p>Dış cephe ısı yalıtımı ve cephe yenileme uygulamaları.</p></article>
-          <article class="service-card"><div class="icon">🔧</div><h3>Tadilat İşleri</h3><p>Ev, iş yeri ve diğer alanlarda yenileme ve tadilat.</p></article>
-          <article class="service-card"><div class="icon">🛠️</div><h3>Tamir İşleri</h3><p>Yapıdaki çeşitli onarım ve bakım ihtiyaçları.</p></article>
-          <article class="service-card"><div class="icon">◼️</div><h3>Fayans İşleri</h3><p>Mutfak, banyo ve diğer alanlarda fayans uygulaması.</p></article>
-          <article class="service-card"><div class="icon">🔑</div><h3>Anahtar Teslim</h3><p>Projenizin başından sonuna kadar koordineli uygulama.</p></article>
-          <article class="service-card"><div class="icon">🏚️</div><h3>Çatı İşleri</h3><p>Çatı onarımı, yenileme ve ilgili uygulamalar.</p></article>
-          <article class="service-card"><div class="icon">⚙️</div><h3>Demir Doğrama</h3><p>Demir doğrama ve metal uygulamaları.</p></article>
-        </div>
-      </div>
+    <!-- Banner -->
+    <section class="banner">
+        <h3>Ücretsiz Keşif & Fiyat Teklifi Alın</h3>
+        <p>Kişiye özel tasarım ve kaliteli ustalığımızla projelerinize değer katıyoruz.</p>
+        <a href="tel:+905383486268" class="btn btn-primary"><i class="fa-solid fa-phone"></i> 0538 348 62 68</a>
     </section>
 
-    <section id="hakkimizda" class="section about">
-      <div class="container about-grid">
-        <div class="image-wrap">
-          <img src="assets/firma-tabela.jpg" alt="Usta İnşaat iş yeri ve hizmet tabelası">
-          <div class="image-badge"><strong>USTA</strong><span>Sağlam yapılar, güvenli gelecek.</span></div>
+    <!-- İletişim -->
+    <section class="contact">
+        <div class="contact-box">
+            <i class="fa-solid fa-headset" style="font-size: 40px; color: var(--primary-color);"></i>
+            <h4>Bize Ulaşın</h4>
+            <p>Tüm inşaat ve tadilat projeleriniz için bir telefon kadar yakınız.</p>
+            <a href="tel:+905383486268" class="phone-number"><i class="fa-solid fa-phone"></i> +90 538 348 62 68</a>
+            <a href="https://wa.me/905383486268?text=Merhaba,%20bilgi%20almak%20istiyorum." target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Mesaj Gönder</a>
         </div>
-        <div>
-          <span class="eyebrow">NEDEN BİZ?</span>
-          <h2>İşinizi baştan sona <span>planlıyoruz.</span></h2>
-          <p class="lead">Her yapının ihtiyacı farklıdır. Bu nedenle işe başlamadan önce ihtiyacı dinliyor, yapılacak işleri netleştiriyor ve uygulamayı buna göre planlıyoruz.</p>
-          <div class="check-list">
-            <div><b>✓</b><span><strong>Kişiye özel tasarım</strong><small>Alanınıza ve bütçenize uygun çözüm.</small></span></div>
-            <div><b>✓</b><span><strong>Temiz ve düzenli çalışma</strong><small>Uygulama sürecinde düzen ve iletişim.</small></span></div>
-            <div><b>✓</b><span><strong>Tek noktadan hizmet</strong><small>Birden fazla yapı işini tek ekip üzerinden koordine edin.</small></span></div>
-          </div>
-          <a class="btn primary" href="#iletisim">Projenizi Anlatın →</a>
-        </div>
-      </div>
     </section>
 
-    <section id="projeler" class="section projects">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">ÇALIŞMALARIMIZ</span>
-            <h2>Projelerinizi <span>birlikte</span> hayata geçirelim</h2>
-          </div>
-          <p>Gerçek proje fotoğraflarınızı buraya ekleyerek güçlü bir referans galerisi oluşturabiliriz.</p>
-        </div>
-        <div class="project-grid">
-          <div class="project-placeholder"><span>BOYA & BADANA</span><strong>Proje fotoğrafı</strong></div>
-          <div class="project-placeholder"><span>FAYANS</span><strong>Proje fotoğrafı</strong></div>
-          <div class="project-placeholder"><span>MANTOLAMA</span><strong>Proje fotoğrafı</strong></div>
-          <div class="project-placeholder"><span>ÇATI</span><strong>Proje fotoğrafı</strong></div>
-        </div>
-      </div>
-    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Usta İnşaat (ustainsaat.com) - Tüm Hakları Saklıdır.</p>
+    </footer>
 
-    <section class="cta-band">
-      <div class="container cta-inner">
-        <div><span class="eyebrow">PROJENİZ HAZIR MI?</span><h2>İşinizi birlikte planlayalım.</h2></div>
-        <a class="btn light" href="https://wa.me/905326164689?text=Merhaba%2C%20projem%20i%C3%A7in%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan Teklif Al →</a>
-      </div>
-    </section>
-
-    <section id="iletisim" class="section contact">
-      <div class="container contact-grid">
-        <div>
-          <span class="eyebrow">İLETİŞİM</span>
-          <h2>Projenizi <span>anlatın.</span></h2>
-          <p>Yapılacak işi, konumu ve mümkünse birkaç fotoğrafı WhatsApp üzerinden gönderin. Size dönüş yapalım.</p>
-          <div class="contact-items">
-            <a href="tel:+905326164689"><span>📞</span><div><small>Telefon</small><strong>+90 532 616 46 89</strong></div></a>
-            <a href="https://wa.me/905326164689" target="_blank" rel="noopener"><span>💬</span><div><small>WhatsApp</small><strong>Mesaj Gönder</strong></div></a>
-          </div>
-        </div>
-        <form class="quote-form" id="quoteForm">
-          <h3>Hızlı Teklif Talebi</h3>
-          <label>Ad Soyad<input id="name" required placeholder="Adınız Soyadınız"></label>
-          <label>Telefon<input id="phone" required placeholder="05xx xxx xx xx"></label>
-          <label>Hizmet<select id="service"><option>Boya - Badana</option><option>Alçı - Sıva</option><option>Mantolama</option><option>Tadilat</option><option>Fayans</option><option>Çatı İşleri</option><option>Demir Doğrama</option><option>Anahtar Teslim</option><option>Diğer</option></select></label>
-          <label>Mesajınız<textarea id="message" rows="4" placeholder="Yapılacak işi kısaca anlatın..."></textarea></label>
-          <button class="btn primary" type="submit">WhatsApp'a Gönder →</button>
-          <small>Form gönderildiğinde WhatsApp mesaj ekranı açılır.</small>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div><a class="brand footer-brand" href="#anasayfa"><span class="brand-mark">⌂</span><span><strong>USTA</strong> İNŞAAT<small>YAPI • TADİLAT • ONARIM</small></span></a><p>Sağlam yapılar, güvenli gelecek.</p></div>
-      <div><h4>Hızlı Menü</h4><a href="#hizmetler">Hizmetler</a><a href="#hakkimizda">Hakkımızda</a><a href="#projeler">Çalışmalarımız</a><a href="#iletisim">İletişim</a></div>
-      <div><h4>İletişim</h4><a href="tel:+905326164689">+90 532 616 46 89</a><a href="https://wa.me/905326164689" target="_blank" rel="noopener">WhatsApp</a></div>
+    <!-- Mobil Hızlı Erişim Butonları -->
+    <div class="sticky-contact">
+        <a href="tel:+905383486268" class="sticky-btn sticky-call" title="Hemen Ara">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <a href="https://wa.me/905383486268?text=Merhaba,%20hizmetleriniz%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" class="sticky-btn sticky-whatsapp" title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
     </div>
-    <div class="copyright">© <span id="year"></span> Usta İnşaat. Tüm hakları saklıdır.</div>
-  </footer>
 
-  <a class="floating-wa" href="https://wa.me/905326164689?text=Merhaba%2C%20Usta%20%C4%B0n%C5%9Faat%20hizmetleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
-  <script src="script.js"></script>
 </body>
 </html>
